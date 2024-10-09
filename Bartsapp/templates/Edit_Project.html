@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<!DOCTYPE html>
+{% extends 'index.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CATEGORY</title>
+</head>
+<body>
+<form class="forms-sample" method="post" action="{% url 'Update_Project' pid=data.id %}" enctype="multipart/form-data">
+    {%csrf_token%}
+                    <div class="form-group">
+
+                      </div>
+                    <div class="form-group">
+                      <label >Client Name</label>
+                      <input type="text" class="form-control" id="cname" placeholder="Name" name="name" value="{{data.Client_name}}">
+                    </div>
+                    <div class="form-group">
+                      <label >Work Year</label>
+                      <input type="number" class="form-control" id="year"  value="{{data.Work_year}}" name="work">
+                    </div>
+                        <div class="form-group">
+                      <label >Started Date</label>
+                      <input type="date" class="form-control" id="syear" placeholder="year" name="syear"
+
+                             value="{{data.Started_date|date:'Y-m-d' }}">
+                    </div>
+                    <div class="form-group">
+                      <label >Finished Date</label>
+                      <input type="date" class="form-control" id="eyear" placeholder="year" name="fyear" value="{{data.Finished_date|date:'Y-m-d' }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Image1</label>
+                        <img src="{{data.Image1.url}}" height="150px" width="150px">
+                      <input type="file" class="form-control" id="exampleInputEmail1" placeholder="" name="image1">
+                    </div>
+                        <div class="form-group">
+                      <label for="exampleInputEmail3">Image1</label>
+                        <img src="{{data.Image2.url}}" height="150px" width="150px">
+                      <input type="file" class="form-control" id="exampleInputEmail2" placeholder="" name="image2">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Image1</label>
+                        <img src="{{data.Image3.url}}" height="150px" width="150px">
+                      <input type="file" class="form-control" id="exampleInputEmail3" placeholder="" name="image3">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Image1</label>
+                        <img src="{{data.Image4.url}}" height="150px" width="150px">
+                      <input type="file" class="form-control" id="exampleInputEmail4" placeholder="" name="image4">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail3">Image1</label>
+                        <img src="{{data.Image5.url}}" height="150px" width="150px">
+                      <input type="file" class="form-control" id="exampleInputEmail5" placeholder="" name="image5">
+                    </div>
+
+<!--                    <div class="form-group">-->
+<!--                      <label>Category Image</label>-->
+<!--                      <input type="file" name="img[]" class="file-upload-default">-->
+<!--                      <div class="input-group col-xs-12">-->
+<!--                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputCity1">City</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleTextarea1">Textarea</label>-->
+<!--                      <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>-->
+<!--                    </div>-->
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ {% if messages %}
+  {% for i in messages %}
+     {% if i.tags == 'warning' %};
+        <script>
+            swal('{{i}}','','warning');
+        </script>
+     {% elif i.tags == 'error' %}
+        <script>
+            swal('{{i}}','','error');
+        </script>
+      {% elif i.tags == 'info' %}
+        <script>
+            swal('{{i}}','','info');
+        </script>
+      {% else %}
+         <script>
+            swal('{{i}}','','success');
+        </script>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+
+</body>
+</html>
+{%endblock%}
